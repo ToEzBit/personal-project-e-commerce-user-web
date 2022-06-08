@@ -9,7 +9,7 @@ module.exports = {
       colors: {
         "dark-blue": "#00598a",
         "button-blue": "#2176AE",
-        "button-hover": "#57B8FF",
+        "button-hover": "#FEBF6E",
       },
     },
   },
