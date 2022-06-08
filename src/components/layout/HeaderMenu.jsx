@@ -20,7 +20,7 @@ function HeaderMenu() {
 
   return (
     <>
-      <nav className="relative w-full flex flex-wrap items-center justify-between py-4 bg-dark-blue shadow-lg navbar navbar-expand ">
+      <nav className=" w-full flex flex-wrap items-center justify-between py-4 bg-dark-blue shadow-lg navbar navbar-expand ">
         <div className="container-fluid w-full flex  items-center justify-between px-6">
           <div
             className="collapse navbar-collapse items-center "

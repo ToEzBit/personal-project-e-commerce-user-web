@@ -5,7 +5,7 @@ import HeaderMenu from "./HeaderMenu";
 function AuthLayout() {
   return (
     <>
-      <div className="">
+      <div>
         <HeaderMenu />
         <Outlet />
       </div>
