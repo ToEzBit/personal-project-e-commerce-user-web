@@ -50,11 +50,10 @@ function HeaderMenu() {
               icon={
                 <AiOutlineUser className="text-white text-3xl hover:text-button-hover" />
               }
-              item={[
-                <DropDownItem key="1" title="Account Setting" to="/product" />,
-                <DropDownItem key="2" title="Log out" onClick={handleLogout} />,
-              ]}
-            />
+            >
+              <DropDownItem key="1" title="Account Setting" to="/product" />
+              <DropDownItem key="2" title="Log out" onClick={handleLogout} />
+            </DropDownContainer>
           </div>
         </div>
       </nav>
