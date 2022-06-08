@@ -4,6 +4,8 @@ import HomePage from "../pages/HomePage";
 import { useAuth } from "../context/AuthContext";
 import AuthLayout from "../components/layout/AuthLayout";
 import SignUpPage from "../pages/SignUpPage";
+import SearchPage from "../pages/SearchPage";
+import ProductPage from "../pages/ProductPage";
 
 function Router() {
   const { user } = useAuth();
@@ -14,6 +16,8 @@ function Router() {
         <>
           <Route path="/" element={<AuthLayout />}>
             <Route path="" element={<HomePage />} />
+            <Route path="/search" element={<SearchPage />} />
+            <Route path="/product" element={<ProductPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </>
