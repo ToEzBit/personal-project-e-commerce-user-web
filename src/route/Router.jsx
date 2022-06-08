@@ -3,6 +3,7 @@ import LoginPage from "../pages/LoginPage";
 import HomePage from "../pages/HomePage";
 import { useAuth } from "../context/AuthContext";
 import AuthLayout from "../components/layout/AuthLayout";
+import SignUpPage from "../pages/SignUpPage";
 
 function Router() {
   const { user } = useAuth();
@@ -19,6 +20,7 @@ function Router() {
       ) : (
         <>
           <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
           <Route path="*" element={<LoginPage />} />
         </>
       )}

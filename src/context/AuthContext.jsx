@@ -35,8 +35,15 @@ function AuthContextProvider({ children }) {
     setUser(resMe.data.user);
   };
 
+  const signUp = async (input) => {
+    const res = await axios.post("/auth/signup", input);
+    setAccessToken(res.data.token);
+    const resMe = await axios.get("/users/me");
+    setUser(resMe.data.user);
+  };
+
   return (
-    <AuthContext.Provider value={{ login, user }}>
+    <AuthContext.Provider value={{ login, user, signUp }}>
       {children}
     </AuthContext.Provider>
   );

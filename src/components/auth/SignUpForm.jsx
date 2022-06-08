@@ -5,15 +5,17 @@ import { useError } from "../../context/ErrorContext";
 
 function FormContainer() {
   const [email, setEmail] = useState("");
+  const [userName, setUserName] = useState("");
   const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
-  const { login } = useAuth();
+  const { signUp } = useAuth();
   const { setError } = useError();
 
   const handleSubmitForm = async (e) => {
     try {
       e.preventDefault();
-      await login({ email, password });
+      await signUp({ email, userName, password, confirmPassword });
     } catch (err) {
       setError(err.response);
     }
@@ -53,6 +55,37 @@ function FormContainer() {
               placeholder="Enter email"
             />
           </div>
+          <div className="form-group mb-6 mt-4">
+            <label
+              htmlFor="exampleInputEmail2"
+              className="form-label inline-block mb-2 text-gray-700"
+            >
+              Username
+            </label>
+            <input
+              type="text"
+              className="form-control
+        block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              value={userName}
+              onChange={(e) => setUserName(e.target.value)}
+              id="exampleInputEmail2"
+              aria-describedby="emailHelp"
+              placeholder="Enter username"
+            />
+          </div>
           <div className="form-group mb-6">
             <label
               htmlFor="exampleInputPassword2"
@@ -82,6 +115,35 @@ function FormContainer() {
               placeholder="Password"
             />
           </div>
+          <div className="form-group mb-6">
+            <label
+              htmlFor="exampleInputPassword2"
+              className="form-label inline-block mb-2 text-gray-700"
+            >
+              Confirm Password
+            </label>
+            <input
+              type="password"
+              className="form-control block
+        w-full
+        px-3
+        py-1.5
+        text-base
+        font-normal
+        text-gray-700
+        bg-white bg-clip-padding
+        border border-solid border-gray-300
+        rounded
+        transition
+        ease-in-out
+        m-0
+        focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
+              value={confirmPassword}
+              onChange={(e) => setConfirmPassword(e.target.value)}
+              id="exampleInputPassword2"
+              placeholder="ConFirm Password"
+            />
+          </div>
           <button
             type="submit"
             className="
@@ -101,17 +163,8 @@ function FormContainer() {
       duration-150
       ease-in-out"
           >
-            Sign in
+            Sign up !
           </button>
-          <p className="text-gray-800 mt-6 text-center">
-            Not a member?{" "}
-            <Link
-              to="/signup"
-              className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
-            >
-              Sign up
-            </Link>
-          </p>
         </form>
       </div>
     </>
