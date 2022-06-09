@@ -1,11 +1,11 @@
 import React from "react";
-import CarouselContainer from "./CarouselContainer";
-import CarouselItem from "./CarouselItem";
+import CarouselContainer from "../ui/carousel/CarouselContainer";
+import CarouselItem from "../ui/carousel/CarouselItem";
 
 function Carousel() {
   return (
     <div className="flex justify-center">
-      <CarouselContainer>
+      <CarouselContainer width="w-9/12">
         <CarouselItem
           src="https://res.cloudinary.com/myclound/image/upload/v1654691032/codecamp-e-commerce/carousel/bnr_bb_rx-93ff_vgundam-1_pwqsv1.jpg"
           active={true}

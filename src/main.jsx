@@ -5,13 +5,16 @@ import App from "./App";
 import "./index.css";
 import AuthContextProvider from "./context/AuthContext";
 import ErrorContextProvider from "./context/ErrorContext";
+import ProductContextProvider from "./context/ProductContext";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <BrowserRouter>
       <ErrorContextProvider>
         <AuthContextProvider>
-          <App />
+          <ProductContextProvider>
+            <App />
+          </ProductContextProvider>
         </AuthContextProvider>
       </ErrorContextProvider>
     </BrowserRouter>

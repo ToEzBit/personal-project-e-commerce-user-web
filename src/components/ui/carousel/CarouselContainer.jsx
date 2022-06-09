@@ -1,10 +1,10 @@
 import React from "react";
 
-function ModalContainer({ children }) {
+function CarouselContainer({ children, width }) {
   return (
     <div
       id="carouselExampleControls"
-      className="carousel slide relative w-9/12  "
+      className={`carousel slide relative ${width}`}
       data-bs-ride="carousel"
     >
       <div className="carousel-inner relative w-full overflow-hidden">
@@ -38,4 +38,4 @@ function ModalContainer({ children }) {
   );
 }
 
-export default ModalContainer;
+export default CarouselContainer;

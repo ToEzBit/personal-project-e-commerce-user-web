@@ -22,7 +22,7 @@ function FormContainer() {
   };
   return (
     <>
-      <div className="block p-6 rounded-lg shadow-lg bg-white max-w-full w-1/3">
+      <div className="block p-6 w-fit rounded-lg shadow-lg bg-white mt-4 md:w-1/3 md:mt-0 md:max-w-none">
         <form onSubmit={handleSubmitForm}>
           <div className="form-group mb-6 mt-4">
             <label

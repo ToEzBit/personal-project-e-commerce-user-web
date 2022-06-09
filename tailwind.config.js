@@ -11,7 +11,14 @@ module.exports = {
         "button-blue": "#2176AE",
         "button-hover": "#FEBF6E",
       },
+      grayscale: {
+        50: "50%",
+      },
+      backgroundImage: {
+        home: "url('https://res.cloudinary.com/myclound/image/upload/v1654705613/codecamp-e-commerce/webImage/background/bg_ms3_fmk45k.jpg')",
+        shop: "url('https://res.cloudinary.com/myclound/image/upload/v1654705606/codecamp-e-commerce/webImage/background/bg_ms1_rq7m8s.jpg')",
+      },
     },
   },
-  plugins: [require("tw-elements/dist/plugin")],
+  plugins: [require("tw-elements/dist/plugin"), require("preline/plugin")],
 };

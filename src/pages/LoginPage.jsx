@@ -6,14 +6,16 @@ import { useError } from "../context/ErrorContext";
 
 function LoginPage() {
   const { error } = useError();
+  console.log(error);
+
   return (
     <div className="container-xl bg-dark-blue min-h-screen ">
-      <div className="flex justify-between h-20 bg-white  items-center">
+      <div className="flex justify-between h-20 bg-white  items-center ">
         <h1 className="text-3xl font-black ml-10">Login</h1>
         <h1 className="mr-10">Need Help?</h1>
       </div>
-      <div className="flex justify-between  mx-24 my-24">
-        <img className="max-w-md max-h-80" src={hero}></img>
+      <div className="flex flex-col sm:flex-col md:flex-row justify-between  mx-24 my-24 ">
+        <img className="w-xs self-center" src={hero}></img>
         <LoginForm />
       </div>
       {error && <Toast title={error.statusText} message={error.data.message} />}

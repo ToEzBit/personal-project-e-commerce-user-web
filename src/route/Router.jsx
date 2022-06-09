@@ -17,7 +17,7 @@ function Router() {
           <Route path="/" element={<AuthLayout />}>
             <Route path="" element={<HomePage />} />
             <Route path="/search" element={<SearchPage />} />
-            <Route path="/product" element={<ProductPage />} />
+            <Route path="/product/:productId" element={<ProductPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </>

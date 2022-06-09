@@ -20,7 +20,7 @@ function FormContainer() {
   };
   return (
     <>
-      <div className="block p-6 rounded-lg shadow-lg bg-white max-w-full w-1/3">
+      <div className="block p-6 w-fit   rounded-lg shadow-lg bg-white mt-4 md:w-1/3 md:mt-0 md:max-w-none">
         <form onSubmit={handleSubmitForm}>
           <div className="form-group mb-6 mt-4">
             <label
@@ -105,11 +105,8 @@ function FormContainer() {
           </button>
           <p className="text-gray-800 mt-6 text-center">
             Not a member?{" "}
-            <Link
-              to="/signup"
-              className="text-blue-600 hover:text-blue-700 focus:text-blue-700 transition duration-200 ease-in-out"
-            >
-              Sign up
+            <Link to="/signup" className="text-button-hover ">
+              Register
             </Link>
           </p>
         </form>
