@@ -6,6 +6,8 @@ import AuthLayout from "../components/layout/AuthLayout";
 import SignUpPage from "../pages/SignUpPage";
 import SearchPage from "../pages/SearchPage";
 import ProductPage from "../pages/ProductPage";
+import CartPage from "../pages/CartPage";
+import MyPurchasePage from "../pages/MyPurchasePage";
 
 function Router() {
   const { user } = useAuth();
@@ -18,6 +20,8 @@ function Router() {
             <Route path="" element={<HomePage />} />
             <Route path="/search" element={<SearchPage />} />
             <Route path="/product/:productId" element={<ProductPage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/my-purchase" element={<MyPurchasePage />} />
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </>

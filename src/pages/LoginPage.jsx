@@ -6,7 +6,6 @@ import { useError } from "../context/ErrorContext";
 
 function LoginPage() {
   const { error } = useError();
-  console.log(error);
 
   return (
     <div className="container-xl bg-dark-blue min-h-screen ">

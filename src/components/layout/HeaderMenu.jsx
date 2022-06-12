@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import hero from "../../../asset/image/hero.webp";
 import DropDownContainer from "../ui/dropdown/DropDownContainer";
 import {
@@ -11,10 +11,17 @@ import DropDownItem from "../ui/dropdown/DropDownItem";
 import { removeAccessToken } from "../../services/localStorage";
 
 function HeaderMenu() {
+  const navigate = useNavigate();
   const [search, setSearch] = useState("");
 
   const handleLogout = () => {
     removeAccessToken();
+    navigate("/login");
+    location.reload();
+  };
+
+  const handleMyPurchase = () => {
+    navigate("/my-purchase");
     location.reload();
   };
 
@@ -44,7 +51,10 @@ function HeaderMenu() {
           />
           <div className="flex items-center relative mr-8">
             <button>
-              <AiOutlineShoppingCart className="text-white text-3xl hover:text-button-hover mr-14" />
+              <AiOutlineShoppingCart
+                className="text-white text-3xl hover:text-button-hover mr-14"
+                onClick={() => navigate("/cart")}
+              />
             </button>
             <DropDownContainer
               icon={
@@ -52,7 +62,12 @@ function HeaderMenu() {
               }
             >
               <DropDownItem key="1" title="Account Setting" to="/product" />
-              <DropDownItem key="2" title="Log out" onClick={handleLogout} />
+              <DropDownItem
+                key="2"
+                title="My Purchase"
+                onClick={handleMyPurchase}
+              />
+              <DropDownItem key="3" title="Log out" onClick={handleLogout} />
             </DropDownContainer>
           </div>
         </div>
