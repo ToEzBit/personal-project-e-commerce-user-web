@@ -61,7 +61,11 @@ function HeaderMenu() {
                 <AiOutlineUser className="text-white text-3xl hover:text-button-hover" />
               }
             >
-              <DropDownItem key="1" title="Account Setting" to="/product" />
+              <DropDownItem
+                key="1"
+                title="Account Setting"
+                to="/account-setting"
+              />
               <DropDownItem
                 key="2"
                 title="My Purchase"

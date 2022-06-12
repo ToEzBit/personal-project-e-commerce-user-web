@@ -8,6 +8,7 @@ import SearchPage from "../pages/SearchPage";
 import ProductPage from "../pages/ProductPage";
 import CartPage from "../pages/CartPage";
 import MyPurchasePage from "../pages/MyPurchasePage";
+import AccountSettingPage from "../pages/AccountSettingPage";
 
 function Router() {
   const { user } = useAuth();
@@ -22,6 +23,7 @@ function Router() {
             <Route path="/product/:productId" element={<ProductPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/my-purchase" element={<MyPurchasePage />} />
+            <Route path="/account-setting" element={<AccountSettingPage />} />
           </Route>
           <Route path="*" element={<Navigate to="/" />} />
         </>

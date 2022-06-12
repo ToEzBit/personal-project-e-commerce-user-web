@@ -76,7 +76,7 @@ function Sidebar({ totalPrice, addresses, orderId, isExistOrderProduct }) {
         </div>
         {addresses.length > 0 &&
           selectedPayment === "BT" &&
-          isExistOrderProduct.length > 0 && (
+          isExistOrderProduct?.length > 0 && (
             <ModalContainer
               mainBtnMessage="Pay with Bank Transfer"
               title="Bank Transfer"
