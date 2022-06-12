@@ -20,7 +20,7 @@ function Sidebar({ totalPrice, addresses, orderId, isExistOrderProduct }) {
       alert("Pleas upload you slip");
       return;
     }
-    await checkout(orderId, slipPayment);
+    await checkout(orderId, selectedAddress, slipPayment);
     navigate("/my-purchase");
     location.reload(false);
   };

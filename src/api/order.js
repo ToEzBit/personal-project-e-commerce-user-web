@@ -5,6 +5,11 @@ export const getMyOrdersByStatus = async (status) => {
   return res.data.orders;
 };
 
+export const getMyOrderExistNewOrders = async () => {
+  const res = await axios.get("/orders/all");
+  return res.data.orders;
+};
+
 export const updateOrderProduct = async (action, orderProductId) => {
   await axios.patch(`/orders/orderProduct/${orderProductId}?action=${action}`);
 };
@@ -27,9 +32,9 @@ export const createOrder = async (productId, amount) => {
   await axios.post(`/orders`, productObj);
 };
 
-export const checkout = async (orderId, slip) => {
+export const checkout = async (orderId, addressId, slip) => {
   const formData = new FormData();
   formData.append("slip", slip);
-  await axios.patch(`/orders/checkout/${orderId}`);
+  await axios.patch(`/orders/checkout/${orderId}`, { addressId: addressId });
   await axios.patch(`/orders/payment/${orderId}`, formData);
 };

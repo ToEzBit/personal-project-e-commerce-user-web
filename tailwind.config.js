@@ -17,6 +17,8 @@ module.exports = {
       backgroundImage: {
         home: "url('https://res.cloudinary.com/myclound/image/upload/v1654705613/codecamp-e-commerce/webImage/background/bg_ms3_fmk45k.jpg')",
         shop: "url('https://res.cloudinary.com/myclound/image/upload/v1654705606/codecamp-e-commerce/webImage/background/bg_ms1_rq7m8s.jpg')",
+        purchase:
+          "url('https://res.cloudinary.com/myclound/image/upload/v1654705606/codecamp-e-commerce/webImage/background/bg_ms2_v8hbou.jpg')",
       },
     },
   },
