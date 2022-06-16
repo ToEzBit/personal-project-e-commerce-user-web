@@ -4,6 +4,7 @@ import OrderProductHeader from "./OrderProductHeader";
 import { useAuth } from "../../context/AuthContext";
 
 function MyPurchaseItem({
+  id,
   addressId,
   OrderProducts,
   totalPrice,
@@ -30,7 +31,7 @@ function MyPurchaseItem({
     if (status === "succeed") {
       setStatusColor("text-green-300");
     }
-    if (status === "cancelled") {
+    if (status === "canceled") {
       setStatusColor("text-red-300");
     }
   }, []);
@@ -40,7 +41,7 @@ function MyPurchaseItem({
   return (
     <div className="bg-white w-full rounded-lg my-4  px-8 py-8 ">
       <div className="flex justify-between">
-        <p>{user.userName || Doge}</p>
+        <p>{`Order id: ${id}`}</p>
         <p className={`text-2xl capitalize font-bold ${statusColor}`}>
           {status}
         </p>

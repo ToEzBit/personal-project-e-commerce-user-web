@@ -33,7 +33,7 @@ function NewAddress() {
   };
 
   return (
-    <div className=" rounded-xl px-4 py-4 my-4 w-fit">
+    <div className=" rounded-xl px-4 py-4 my-4 w-fit mx-auto">
       <form onSubmit={handleSubmit}>
         <div className="new-address-input">
           <label htmlFor="name">Name</label>
