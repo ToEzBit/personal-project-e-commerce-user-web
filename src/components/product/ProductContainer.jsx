@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import { getProductById } from "../../api/getProduct";
+import { getProductById } from "../../api/product";
 import {
   addOrderProduct,
   createOrder,
@@ -36,8 +36,10 @@ function ProductContainer() {
     const fetchProduct = async () => {
       try {
         const res = await getProductById(productId);
+
         setProduct(res);
       } catch (err) {
+        navigate("/");
         console.log(err);
       }
     };

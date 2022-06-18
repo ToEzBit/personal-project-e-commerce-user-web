@@ -8,7 +8,7 @@ function ProductContextProvider({ children }) {
   useEffect(() => {
     const fetchProduct = async () => {
       try {
-        const res = await axios.get("/products");
+        const res = await axios.get("/products/active");
         setProduct(res.data.products);
       } catch (err) {
         console.log(err);
