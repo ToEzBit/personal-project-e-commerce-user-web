@@ -10,7 +10,7 @@ function ProductPage() {
         <img src="https://res.cloudinary.com/myclound/image/upload/v1654712695/codecamp-e-commerce/webImage/header/titleBg_msuc_jibuuf.jpg" />
         <img src="https://res.cloudinary.com/myclound/image/upload/v1654712694/codecamp-e-commerce/webImage/header/bg_col_top_ydf6lm.png" />
       </div>
-      <div className="container m-auto mt-4 px-4  bg-shop  bg-repeat ">
+      <div className="container mx-auto  px-4  bg-shop  bg-repeat ">
         <ProductContainer />
       </div>
       <div></div>

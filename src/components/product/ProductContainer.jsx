@@ -82,14 +82,23 @@ function ProductContainer() {
   };
   return (
     <>
-      <span
-        className={`inline-flex items-center  gap-1.5 py-1.5 pl-6 my-4  rounded-lg text-xl font-medium capitalize ${
-          product?.role === "limited" ? "bg-red-400 w-28" : "bg-dark-blue w-32"
-        }  text-white`}
-      >
-        {product?.role}
-      </span>
-      <h1 className="text-dark-blue text-3xl font-bold ">
+      {product?.role === "limited" ? (
+        <span
+          className={`rounded-lg text-xl font-bold bg-red-400 text-white px-2 py-2 `}
+        >
+          {"LIMITED"}
+        </span>
+      ) : null}
+
+      {product?.role === "event" ? (
+        <span
+          className={`rounded-lg text-xl font-bold bg-green-400 text-white px-2 py-2 `}
+        >
+          {"EVENT"}
+        </span>
+      ) : null}
+
+      <h1 className="text-dark-blue text-3xl font-bold  my-8">
         {product?.productName}
       </h1>
       <div className="flex justify-around mt-4 ">
