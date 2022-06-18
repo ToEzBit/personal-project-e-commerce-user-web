@@ -22,7 +22,7 @@ function Sidebar({ totalPrice, addresses, orderId, isExistOrderProduct }) {
     }
     await checkout(orderId, selectedAddress, slipPayment);
     navigate("/my-purchase");
-    location.reload(false);
+    window.location.reload(false);
   };
 
   return (

@@ -29,9 +29,13 @@ function Router() {
         </>
       ) : (
         <>
+          <Route path="/" element={<AuthLayout />}>
+            <Route path="" element={<HomePage />} />
+            <Route path="/product/:productId" element={<ProductPage />} />
+            <Route path="*" element={<HomePage />} />
+          </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
-          <Route path="*" element={<LoginPage />} />
         </>
       )}
     </Routes>

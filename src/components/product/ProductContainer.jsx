@@ -6,10 +6,13 @@ import {
   createOrder,
   getMyOrdersByStatus,
 } from "../../api/order";
+import { useAuth } from "../../context/AuthContext";
 import AddToCart from "./AddToCart";
 import Carousel from "./Carousel";
 
 function ProductContainer() {
+  const { user } = useAuth();
+
   const params = useParams();
   const navigate = useNavigate();
   const [existOrder, setExistOrder] = useState(false);
@@ -67,13 +70,13 @@ function ProductContainer() {
   const handleClickAddToCart = () => {
     addOrderProduct(order.id, productId, amount);
     navigate("/cart");
-    location.reload(false);
+    window.location.reload(false);
   };
 
   const handleClickCreateOrder = () => {
     createOrder(productId, amount);
     navigate("/cart");
-    location.reload(false);
+    window.location.reload(false);
   };
   return (
     <>
@@ -94,25 +97,38 @@ function ProductContainer() {
           <p className="border-2 border-slate-600 p-8 mt-4">
             {product?.mainDescription}
           </p>
-          {existProductInOrder || product.stock == "0" ? (
-            <p className="text-xl text-dark-blue font-bold mx-20 my-24">
-              {existProductInOrder
-                ? "You have already this product in cart"
-                : "This product is out of stock"}
-            </p>
+          {user ? (
+            <>
+              {existProductInOrder || product.stock == "0" ? (
+                <p className="text-xl text-dark-blue font-bold mx-20 my-24">
+                  {existProductInOrder
+                    ? "You have already this product in cart"
+                    : "This product is out of stock"}
+                </p>
+              ) : (
+                <div className="flex justify-between mx-2 mt-8">
+                  <p className="text-xl my-7 text-stone-400">Quantity</p>
+                  <AddToCart
+                    stock={product?.stock}
+                    setAmount={setAmount}
+                    handleClickAddToCart={handleClickAddToCart}
+                    handleClickCreateOrder={handleClickCreateOrder}
+                    existOrder={existOrder}
+                    existProductInOrder={existProductInOrder}
+                  />
+                  <p className="text-xl my-7 text-stone-400">{`${product?.stock} pieces available`}</p>
+                </div>
+              )}
+            </>
           ) : (
-            <div className="flex justify-between mx-2 mt-8">
-              <p className="text-xl my-7 text-stone-400">Quantity</p>
-              <AddToCart
-                stock={product?.stock}
-                setAmount={setAmount}
-                handleClickAddToCart={handleClickAddToCart}
-                handleClickCreateOrder={handleClickCreateOrder}
-                existOrder={existOrder}
-                existProductInOrder={existProductInOrder}
-              />
-              <p className="text-xl my-7 text-stone-400">{`${product?.stock} pieces available`}</p>
-            </div>
+            <>
+              <button
+                className="py-3 px-4  mt-4 mx-auto w-56 inline-flex justify-center items-center gap-2 rounded-md border border-transparent font-semibold bg-dark-blue text-white hover:bg-button-blue   transition-all text-sm dark:focus:ring-offset-gray-800"
+                onClick={() => navigate("/login")}
+              >
+                Login
+              </button>
+            </>
           )}
         </div>
       </div>

@@ -29,7 +29,7 @@ function NewAddress() {
     addressObj.postalCode = postalCode;
     addressObj.description = description;
     await createAddress(addressObj, password);
-    location.reload(false);
+    windows.location.reload(false);
   };
 
   return (
