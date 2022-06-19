@@ -46,10 +46,10 @@ function ProductContainer() {
     fetchProduct();
   }, []);
 
-  if (user) {
-    useEffect(() => {
-      const fetchOrder = async () => {
-        try {
+  useEffect(() => {
+    const fetchOrder = async () => {
+      try {
+        if (user) {
           const order = await getMyOrdersByStatus("neworder");
           if (order.length > 0) {
             setOrder(order[0]);
@@ -63,13 +63,13 @@ function ProductContainer() {
           } else {
             setExistOrder(false);
           }
-        } catch (err) {
-          console.log(err);
         }
-      };
-      fetchOrder();
-    }, []);
-  }
+      } catch (err) {
+        console.log(err);
+      }
+    };
+    fetchOrder();
+  }, []);
 
   const handleClickAddToCart = () => {
     addOrderProduct(order.id, productId, amount);
