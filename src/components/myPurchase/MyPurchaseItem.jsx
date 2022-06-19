@@ -7,6 +7,7 @@ function MyPurchaseItem({
   id,
   addressId,
   OrderProducts,
+  discount,
   totalPrice,
   status,
   trackingNumber,
@@ -67,9 +68,15 @@ function MyPurchaseItem({
           <p>{trackingNumber || "wating"}</p>
         </div>
         <p>{`Delivery to ${address.name}`}</p>
+        {discount > 0 ? (
+          <div>
+            <p>Discount</p>
+            <p>{`${discount} 円`}</p>
+          </div>
+        ) : null}
         <div>
           <p>Total Price</p>
-          <p>{totalPrice}</p>
+          <p>{`${totalPrice} 円`}</p>
         </div>
       </div>
     </div>

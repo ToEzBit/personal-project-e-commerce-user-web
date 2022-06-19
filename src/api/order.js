@@ -38,3 +38,12 @@ export const checkout = async (orderId, addressId, slip) => {
   await axios.patch(`/orders/checkout/${orderId}`, { addressId: addressId });
   await axios.patch(`/orders/payment/${orderId}`, formData);
 };
+
+export const checkoutWithDiscount = async (orderId, addressId, slip) => {
+  const formData = new FormData();
+  formData.append("slip", slip);
+  await axios.patch(`/orders/checkout/discount/${orderId}`, {
+    addressId: addressId,
+  });
+  await axios.patch(`/orders/payment/${orderId}`, formData);
+};

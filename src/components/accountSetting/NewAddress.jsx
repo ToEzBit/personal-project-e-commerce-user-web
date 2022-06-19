@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { createAddress } from "../../api/address";
+import { useError } from "../../context/ErrorContext";
 
 function NewAddress() {
   const [name, setName] = useState("");
@@ -9,27 +10,33 @@ function NewAddress() {
   const [description, setDescription] = useState("");
   const [password, setPassword] = useState("");
 
+  const { setError } = useError();
+
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (
-      !name ||
-      !province ||
-      !district ||
-      !postalCode ||
-      !description ||
-      !password
-    ) {
-      alert("Please fill all fields");
-      return;
+    try {
+      e.preventDefault();
+      if (
+        !name ||
+        !province ||
+        !district ||
+        !postalCode ||
+        !description ||
+        !password
+      ) {
+        alert("Please fill all fields");
+        return;
+      }
+      const addressObj = {};
+      addressObj.name = name;
+      addressObj.province = province;
+      addressObj.district = district;
+      addressObj.postalCode = postalCode;
+      addressObj.description = description;
+      await createAddress(addressObj, password);
+      window.location.reload(false);
+    } catch (err) {
+      setError(err.response);
     }
-    const addressObj = {};
-    addressObj.name = name;
-    addressObj.province = province;
-    addressObj.district = district;
-    addressObj.postalCode = postalCode;
-    addressObj.description = description;
-    await createAddress(addressObj, password);
-    windows.location.reload(false);
   };
 
   return (
@@ -90,7 +97,7 @@ function NewAddress() {
           <input
             id="password"
             className="mx-4"
-            type="text"
+            type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { checkout } from "../../api/order";
+import { checkout, checkoutWithDiscount } from "../../api/order";
+import { useAuth } from "../../context/AuthContext";
 import ModalContainer from "../ui/modal/ModalContainer";
 import Spinner from "../ui/spinner/Spinner";
 
@@ -11,6 +12,8 @@ function Sidebar({ totalPrice, addresses, orderId, isExistOrderProduct }) {
   const [loading, setLoading] = useState(false);
 
   const navigate = useNavigate();
+
+  const { user } = useAuth();
 
   useEffect(() => {
     if (addresses.length > 0) {
@@ -24,9 +27,17 @@ function Sidebar({ totalPrice, addresses, orderId, isExistOrderProduct }) {
         return;
       }
       setLoading(true);
-      await checkout(orderId, selectedAddress, slipPayment);
-      navigate("/my-purchase");
-      window.location.reload(false);
+      if (user.point > 0) {
+        console.log("discount");
+        await checkoutWithDiscount(orderId, selectedAddress, slipPayment);
+        navigate("/my-purchase");
+        window.location.reload(false);
+      } else {
+        console.log("no discount");
+        await checkout(orderId, selectedAddress, slipPayment);
+        navigate("/my-purchase");
+        window.location.reload(false);
+      }
     } catch (err) {
     } finally {
       setLoading(false);
@@ -80,11 +91,17 @@ function Sidebar({ totalPrice, addresses, orderId, isExistOrderProduct }) {
           <span className="font-semibold text-sm uppercase">Shipping</span>
           <span className="font-semibold text-sm">Free !!</span>
         </div>
+        <div className="flex justify-between mt-10 mb-5">
+          <span className="font-semibold text-sm uppercase">Discount</span>
+          <span className="font-semibold text-sm">{`${user.point}`}</span>
+        </div>
 
         <div className="border-t mt-8">
           <div className="flex font-semibold justify-between py-6 text-sm uppercase">
             <span>Total price</span>
-            <span>{`${totalPrice || 0} 円`}</span>
+            <span>{`${
+              totalPrice > 0 ? totalPrice - user.point : totalPrice || 0
+            } 円`}</span>
           </div>
           {addresses.length > 0 &&
             selectedPayment === "BT" &&

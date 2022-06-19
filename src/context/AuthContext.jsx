@@ -10,6 +10,7 @@ import {
 const AuthContext = createContext();
 function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
+  const [reReRender, setReRender] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -26,7 +27,7 @@ function AuthContextProvider({ children }) {
       }
     };
     fetchMe();
-  }, []);
+  }, [reReRender]);
 
   const login = async (input) => {
     const res = await axios.post("/auth/login", input);
@@ -43,7 +44,7 @@ function AuthContextProvider({ children }) {
   };
 
   return (
-    <AuthContext.Provider value={{ login, user, signUp }}>
+    <AuthContext.Provider value={{ login, user, signUp, setReRender }}>
       {children}
     </AuthContext.Provider>
   );

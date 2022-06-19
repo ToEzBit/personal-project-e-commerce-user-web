@@ -6,6 +6,7 @@ import MyPurchaseItem from "./MyPurchaseItem";
 
 function MyPurchaseContainer() {
   const [orders, setOrder] = useState();
+  console.log(orders);
 
   useEffect(() => {
     const fetchOrders = async () => {
@@ -26,6 +27,7 @@ function MyPurchaseContainer() {
               id={el.id}
               addressId={el.addressId}
               OrderProducts={el.OrderProducts}
+              discount={el.discount}
               totalPrice={el.totalPrice}
               status={el.status}
               trackingNumber={el.trackingNumber}

@@ -2,11 +2,14 @@ import { Link, useNavigate } from "react-router-dom";
 import hero from "../../../asset/image/hero.webp";
 import DropDownContainer from "../ui/dropdown/DropDownContainer";
 import { useAuth } from "../../context/AuthContext";
-import {
-  AiOutlineShoppingCart,
-  AiOutlineUser,
-  AiOutlineSearch,
-} from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlineUser } from "react-icons/ai";
+
+import { IoGameControllerOutline } from "react-icons/io5";
+
+// IoGameControllerOutline
+
+// GrGamepad
+
 import { useState } from "react";
 import DropDownItem from "../ui/dropdown/DropDownItem";
 import { removeAccessToken } from "../../services/localStorage";
@@ -41,19 +44,34 @@ function HeaderMenu() {
             className="collapse navbar-collapse items-center "
             id="navbarSupportedContent"
           >
-            <Link className="flex items-center mt-2 mr-1" to="/">
-              <img src={hero} className="w-16" alt="img" loading="lazy" />
-            </Link>
+            <img
+              src={hero}
+              className="w-16"
+              alt="img"
+              loading="lazy"
+              role="button"
+              onClick={() => {
+                navigate("/");
+                window.location.reload(false);
+              }}
+            />
           </div>
           <div className="flex items-center relative mr-8">
             {user ? (
               <>
-                <button>
-                  <AiOutlineShoppingCart
-                    className="text-white text-3xl hover:text-button-hover mr-14"
-                    onClick={() => navigate("/cart")}
-                  />
-                </button>
+                <AiOutlineShoppingCart
+                  className="text-white text-3xl hover:text-button-hover mr-14"
+                  role="button"
+                  onClick={() => {
+                    navigate("/cart");
+                    window.location.reload(false);
+                  }}
+                />
+                <IoGameControllerOutline
+                  className="text-white text-3xl hover:text-button-hover mr-14"
+                  role="button"
+                  onClick={() => navigate("/flappy")}
+                />
               </>
             ) : (
               <></>
@@ -69,7 +87,10 @@ function HeaderMenu() {
                   <DropDownItem
                     key="1"
                     title="Account Setting"
-                    to="/account-setting"
+                    onClick={() => {
+                      navigate("/account-setting");
+                      window.location.reload(false);
+                    }}
                   />
                   <DropDownItem
                     key="2"

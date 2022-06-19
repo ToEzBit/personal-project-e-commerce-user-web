@@ -1,0 +1,11 @@
+canvas {
+  background-color: #fafafa;
+  border: 1px solid #eaeaea;
+  border-radius: 3px;
+  box-shadow: 0 0 5px #ccc;
+  margin: 0 auto;
+  overflow: hidden;
+  padding: 0;
+  position: relative;
+  width: 70%;
+}
