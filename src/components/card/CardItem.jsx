@@ -20,13 +20,13 @@ function Card({ title, productName, thumbnail, id }) {
         </Link>
         <div className="p-6">
           {title === "Limited" ? (
-            <span class="bg-red-400 text-white text-sm  mr-2 px-2.5 py-0.5 rounded   font-bold">
+            <span class="bg-[#c70c45] text-white text-sm  mr-2 px-2.5 py-0.5 rounded   font-bold">
               LIMITED
             </span>
           ) : null}
 
           {title === "Event" ? (
-            <span class="bg-green-400 text-white text-sm  mr-2 px-2.5 py-0.5 rounded   font-bold">
+            <span class="bg-[#3db88f] text-white text-sm  mr-2 px-2.5 py-0.5 rounded   font-bold">
               EVENT
             </span>
           ) : null}

@@ -46,28 +46,30 @@ function ProductContainer() {
     fetchProduct();
   }, []);
 
-  useEffect(() => {
-    const fetchOrder = async () => {
-      try {
-        const order = await getMyOrdersByStatus("neworder");
-        if (order.length > 0) {
-          setOrder(order[0]);
-          setExistOrder(true);
-          const existProductInOrder = order[0].OrderProducts.filter(
-            (el) => el.Product.id === Number(productId)
-          );
-          if (existProductInOrder.length > 0) {
-            setExistProductInOrder(true);
+  if (user) {
+    useEffect(() => {
+      const fetchOrder = async () => {
+        try {
+          const order = await getMyOrdersByStatus("neworder");
+          if (order.length > 0) {
+            setOrder(order[0]);
+            setExistOrder(true);
+            const existProductInOrder = order[0].OrderProducts.filter(
+              (el) => el.Product.id === Number(productId)
+            );
+            if (existProductInOrder.length > 0) {
+              setExistProductInOrder(true);
+            }
+          } else {
+            setExistOrder(false);
           }
-        } else {
-          setExistOrder(false);
+        } catch (err) {
+          console.log(err);
         }
-      } catch (err) {
-        console.log(err);
-      }
-    };
-    fetchOrder();
-  }, []);
+      };
+      fetchOrder();
+    }, []);
+  }
 
   const handleClickAddToCart = () => {
     addOrderProduct(order.id, productId, amount);
@@ -84,7 +86,7 @@ function ProductContainer() {
     <>
       {product?.role === "limited" ? (
         <span
-          className={`rounded-lg text-xl font-bold bg-red-400 text-white px-2 py-2 `}
+          className={`rounded-lg text-xl font-bold bg-[#c70c45] text-white px-2 py-2 `}
         >
           {"LIMITED"}
         </span>
@@ -92,7 +94,7 @@ function ProductContainer() {
 
       {product?.role === "event" ? (
         <span
-          className={`rounded-lg text-xl font-bold bg-green-400 text-white px-2 py-2 `}
+          className={`rounded-lg text-xl font-bold bg-[#3db88f] text-white px-2 py-2 `}
         >
           {"EVENT"}
         </span>

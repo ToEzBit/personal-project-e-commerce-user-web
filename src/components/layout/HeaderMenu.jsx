@@ -36,7 +36,7 @@ function HeaderMenu() {
   return (
     <>
       <nav className=" w-full flex flex-wrap items-center justify-between py-4 bg-dark-blue shadow-lg navbar navbar-expand ">
-        <div className="container-fluid w-full flex  items-center justify-between px-6">
+        <div className="container-fluid w-full flex  items-center justify-between px-8">
           <div
             className="collapse navbar-collapse items-center "
             id="navbarSupportedContent"
@@ -45,18 +45,6 @@ function HeaderMenu() {
               <img src={hero} className="w-16" alt="img" loading="lazy" />
             </Link>
           </div>
-          <input
-            className="w-7/12"
-            type="text"
-            placeholder="Search Product"
-            value={search}
-            onChange={(e) => setSearch(e.target.value)}
-          ></input>
-          <AiOutlineSearch
-            className="text-white text-3xl hover:text-button-hover"
-            role="button"
-            onClick={() => alert(search)}
-          />
           <div className="flex items-center relative mr-8">
             {user ? (
               <>

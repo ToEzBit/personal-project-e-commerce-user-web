@@ -19,7 +19,7 @@ function Router() {
         <>
           <Route path="/" element={<AuthLayout />}>
             <Route path="" element={<HomePage />} />
-            <Route path="/search" element={<SearchPage />} />
+            <Route path="/product/search/:category" element={<SearchPage />} />
             <Route path="/product/:productId" element={<ProductPage />} />
             <Route path="/cart" element={<CartPage />} />
             <Route path="/my-purchase" element={<MyPurchasePage />} />
@@ -31,6 +31,7 @@ function Router() {
         <>
           <Route path="/" element={<AuthLayout />}>
             <Route path="" element={<HomePage />} />
+            <Route path="/product/search/:category" element={<SearchPage />} />
             <Route path="/product/:productId" element={<ProductPage />} />
             <Route path="*" element={<HomePage />} />
           </Route>

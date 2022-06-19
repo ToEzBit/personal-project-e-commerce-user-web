@@ -36,8 +36,6 @@ function MyPurchaseItem({
     }
   }, []);
 
-  // console.log(OrderProducts);
-
   return (
     <div className="bg-white w-full rounded-lg my-4  px-8 py-8 ">
       <div className="flex justify-between">
